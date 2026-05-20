@@ -493,6 +493,8 @@ button:focus-visible,
   width: max-content;
   gap: 18px;
   animation: luckCardsRight 42s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .luck-marquee-row:nth-child(2) .luck-marquee-track {
@@ -516,7 +518,8 @@ button:focus-visible,
   box-shadow: 0 12px 28px rgba(91, 59, 44, 0.1);
 }
 
-.luck-card-wall:hover .luck-marquee-track {
+.luck-card-wall:hover .luck-marquee-track,
+.luck-card-wall.is-paused .luck-marquee-track {
   animation-play-state: paused;
 }
 
@@ -579,9 +582,12 @@ button:focus-visible,
   width: max-content;
   gap: 18px;
   animation: couplePhotosLeft 76s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-.couple-photo-marquee:hover .couple-photo-track {
+.couple-photo-marquee:hover .couple-photo-track,
+.couple-photo-marquee.is-paused .couple-photo-track {
   animation-play-state: paused;
 }
 
@@ -604,6 +610,14 @@ button:focus-visible,
 
   to {
     transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luck-marquee-track,
+  .couple-photo-track {
+    animation: none;
+    transform: none;
   }
 }
 

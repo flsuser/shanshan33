@@ -1,3 +1,31 @@
+function enableImageFallback(image) {
+  image.addEventListener(
+    "error",
+    () => {
+      if (image.src.endsWith(".webp")) {
+        image.src = image.src.replace(".webp", ".jpg");
+      }
+    },
+    { once: true }
+  );
+}
+
+document.querySelectorAll('img[src$=".webp"]').forEach(enableImageFallback);
+
+function pauseMarqueeOffscreen(container) {
+  if (!container || !("IntersectionObserver" in window)) return;
+
+  container.classList.add("is-paused");
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      container.classList.toggle("is-paused", !entry.isIntersecting);
+    },
+    { rootMargin: "120px 0px" }
+  );
+
+  observer.observe(container);
+}
+
 const comfortQuotes = [
   "先别急着责怪自己，今天已经走到这里，就已经很了不起。",
   "你不是因为顺利才值得被爱，你本来就值得。",
@@ -150,15 +178,19 @@ if (luckCardMarquee) {
     [...row, ...row].forEach((cardNumber) => {
       const image = document.createElement("img");
       image.className = "luck-card-image";
-      image.src = `assets/luck-cards/card-${String(cardNumber).padStart(2, "0")}.jpg`;
+      image.src = `assets/luck-cards/card-${String(cardNumber).padStart(2, "0")}.webp`;
+      enableImageFallback(image);
       image.alt = `好运卡片 ${cardNumber}`;
       image.loading = "lazy";
+      image.decoding = "async";
       track.appendChild(image);
     });
 
     rowEl.appendChild(track);
     luckCardMarquee.appendChild(rowEl);
   });
+
+  pauseMarqueeOffscreen(luckCardMarquee);
 }
 
 const couplePhotoMarquee = document.querySelector("#couplePhotoMarquee");
@@ -171,11 +203,14 @@ if (couplePhotoMarquee) {
   [...couplePhotoNumbers, ...couplePhotoNumbers].forEach((photoNumber) => {
     const image = document.createElement("img");
     image.className = "couple-photo-image";
-    image.src = `assets/couple-marquee/couple-${String(photoNumber).padStart(2, "0")}.jpg`;
+    image.src = `assets/couple-marquee/couple-${String(photoNumber).padStart(2, "0")}.webp`;
+    enableImageFallback(image);
     image.alt = `我们的合照 ${photoNumber}`;
     image.loading = "lazy";
+    image.decoding = "async";
     track.appendChild(image);
   });
 
   couplePhotoMarquee.appendChild(track);
+  pauseMarqueeOffscreen(couplePhotoMarquee);
 }
