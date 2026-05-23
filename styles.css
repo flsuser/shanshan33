@@ -367,26 +367,21 @@ button:focus-visible,
 
 .love-letter-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-  align-items: start;
+  grid-template-columns: 1fr;
+  gap: 78px;
+  margin-top: 74px;
 }
 
 .love-letter-card {
-  position: relative;
   display: block;
-  overflow: hidden;
-  padding: 14px 14px 64px;
-  border: 1px solid rgba(171, 112, 86, 0.2);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 242, 223, 0.68)),
-    var(--paper);
-  box-shadow: var(--shadow);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .love-letter-card:hover {
-  transform: translateY(-2px);
+  transform: none;
 }
 
 .love-letter-card:focus-visible {
@@ -396,48 +391,32 @@ button:focus-visible,
 
 .love-letter-card img {
   display: block;
-  width: 100%;
-  border-radius: 6px;
+  width: min(100%, 940px);
+  margin: 0 auto;
+  border-radius: 0;
   object-fit: contain;
   background: #fff;
 }
 
 .love-letter-card.tall img {
-  max-height: 760px;
+  max-height: none;
 }
 
 .love-letter-card.floral {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1fr);
-  gap: 22px;
-  align-items: center;
-  padding: 14px;
+  display: block;
 }
 
 .love-letter-card.floral img {
-  max-height: 620px;
+  width: min(100%, 840px);
+  max-height: none;
 }
 
 .love-letter-card span {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  left: 18px;
-  display: block;
-  color: #6d5149;
-  font-size: 0.98rem;
-  font-weight: 800;
-  line-height: 1.5;
+  display: none;
 }
 
 .love-letter-card.floral span {
-  position: static;
-  align-self: center;
-  padding: 34px;
-  border-left: 1px solid rgba(200, 107, 111, 0.18);
-  color: #55372f;
-  font-size: 1.38rem;
+  display: none;
 }
 
 .calm-section {
@@ -939,20 +918,9 @@ button:focus-visible,
     font-size: 1.9rem;
   }
 
-  .love-letter-grid,
-  .love-letter-card.floral {
-    grid-template-columns: 1fr;
-  }
-
-  .love-letter-card.floral {
-    padding-bottom: 64px;
-  }
-
-  .love-letter-card.floral span {
-    position: absolute;
-    padding: 0;
-    border-left: 0;
-    font-size: 0.98rem;
+  .love-letter-grid {
+    gap: 54px;
+    margin-top: 54px;
   }
 
   .luck-draw-panel {
@@ -1022,12 +990,14 @@ button:focus-visible,
     grid-template-columns: 1fr;
   }
 
-  .love-letter-card {
-    padding: 10px 10px 58px;
+  .love-letter-grid {
+    gap: 40px;
+    margin-top: 40px;
   }
 
   .love-letter-card.tall img,
   .love-letter-card.floral img {
+    width: 100%;
     max-height: none;
   }
 
