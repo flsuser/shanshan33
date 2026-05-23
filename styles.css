@@ -76,6 +76,7 @@ a {
 .opening,
 .value-section,
 .effort-section,
+.loved-section,
 .comfort-section,
 .calm-section,
 .letters-section,
@@ -132,6 +133,11 @@ h1 {
 }
 
 .effort-section {
+  padding: 88px 0;
+  border-top: 1px solid rgba(151, 97, 72, 0.14);
+}
+
+.loved-section {
   padding: 88px 0;
   border-top: 1px solid rgba(151, 97, 72, 0.14);
 }
@@ -359,6 +365,81 @@ button:focus-visible,
   background: var(--rose);
 }
 
+.love-letter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: start;
+}
+
+.love-letter-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 14px 14px 64px;
+  border: 1px solid rgba(171, 112, 86, 0.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 242, 223, 0.68)),
+    var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.love-letter-card:hover {
+  transform: translateY(-2px);
+}
+
+.love-letter-card:focus-visible {
+  outline: 3px solid rgba(111, 154, 130, 0.52);
+  outline-offset: 4px;
+}
+
+.love-letter-card img {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+  object-fit: contain;
+  background: #fff;
+}
+
+.love-letter-card.tall img {
+  max-height: 760px;
+}
+
+.love-letter-card.floral {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  padding: 14px;
+}
+
+.love-letter-card.floral img {
+  max-height: 620px;
+}
+
+.love-letter-card span {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  display: block;
+  color: #6d5149;
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.love-letter-card.floral span {
+  position: static;
+  align-self: center;
+  padding: 34px;
+  border-left: 1px solid rgba(200, 107, 111, 0.18);
+  color: #55372f;
+  font-size: 1.38rem;
+}
+
 .calm-section {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -449,6 +530,88 @@ button:focus-visible,
   gap: 18px;
 }
 
+.luck-draw-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 22px;
+  align-items: center;
+  margin: 2px 0 24px;
+  padding: 26px 28px;
+  border: 1px solid rgba(111, 154, 130, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(217, 238, 225, 0.58)),
+    var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.luck-draw-label {
+  margin-bottom: 8px;
+  color: var(--sage);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.luck-draw-panel h3 {
+  margin-bottom: 10px;
+  color: #55372f;
+  font-size: 1.32rem;
+}
+
+.luck-draw-panel p:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.85;
+}
+
+.luck-card-picker {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 24px;
+}
+
+.luck-picker-card {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 58px;
+  padding: 10px 12px;
+  border: 1px solid rgba(171, 112, 86, 0.2);
+  border-radius: 8px;
+  color: #604a42;
+  text-align: left;
+  background: rgba(255, 252, 246, 0.78);
+  box-shadow: none;
+}
+
+.luck-picker-card span {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--rose), var(--peach));
+}
+
+.luck-picker-card strong {
+  min-width: 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.luck-picker-card:hover,
+.luck-picker-card.is-selected {
+  border-color: rgba(111, 154, 130, 0.46);
+  color: #4d3a34;
+  background: rgba(238, 247, 239, 0.88);
+}
+
 .luck-card-wall {
   position: relative;
   overflow: hidden;
@@ -507,15 +670,80 @@ button:focus-visible,
   animation-delay: -24s;
 }
 
-.luck-card-image {
+.luck-card-button {
   flex: 0 0 auto;
+  display: block;
   width: 318px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  box-shadow: none;
+}
+
+.luck-card-button:hover {
+  transform: translateY(-2px);
+}
+
+.luck-card-button:focus-visible {
+  outline: 3px solid rgba(111, 154, 130, 0.52);
+  outline-offset: 4px;
+}
+
+.luck-card-button.is-selected .luck-card-image,
+.luck-card-button.is-selected.luck-card-note {
+  border-color: rgba(111, 154, 130, 0.58);
+  box-shadow: 0 16px 32px rgba(91, 59, 44, 0.16), 0 0 0 4px rgba(217, 238, 225, 0.92);
+}
+
+.luck-card-image {
+  display: block;
+  width: 100%;
   aspect-ratio: 640 / 398;
   border: 1px solid rgba(171, 112, 86, 0.2);
   border-radius: 8px;
   object-fit: cover;
   background: #fff;
   box-shadow: 0 12px 28px rgba(91, 59, 44, 0.1);
+}
+
+.luck-card-note {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 12px;
+  aspect-ratio: 640 / 398;
+  padding: 24px 26px;
+  border: 1px solid rgba(171, 112, 86, 0.2);
+  background:
+    linear-gradient(135deg, rgba(255, 242, 223, 0.96), rgba(255, 255, 255, 0.9)),
+    var(--paper);
+  box-shadow: 0 12px 28px rgba(91, 59, 44, 0.1);
+}
+
+.luck-note-number {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--sage), var(--peach));
+}
+
+.luck-card-note strong {
+  color: #55372f;
+  font-size: 1.18rem;
+  line-height: 1.3;
+}
+
+.luck-card-note span:last-child {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.72;
 }
 
 .luck-card-wall:hover .luck-marquee-track,
@@ -674,6 +902,7 @@ button:focus-visible,
   .site-header,
   .value-section,
   .effort-section,
+  .loved-section,
   .comfort-section,
   .calm-section {
     grid-template-columns: 1fr;
@@ -710,6 +939,34 @@ button:focus-visible,
     font-size: 1.9rem;
   }
 
+  .love-letter-grid,
+  .love-letter-card.floral {
+    grid-template-columns: 1fr;
+  }
+
+  .love-letter-card.floral {
+    padding-bottom: 64px;
+  }
+
+  .love-letter-card.floral span {
+    position: absolute;
+    padding: 0;
+    border-left: 0;
+    font-size: 0.98rem;
+  }
+
+  .luck-draw-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .luck-draw-panel button {
+    justify-self: start;
+  }
+
+  .luck-card-picker {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .effort-carousel {
     grid-template-columns: 1fr 1fr;
     gap: 14px;
@@ -742,6 +999,7 @@ button:focus-visible,
   .comfort-section,
   .company-section,
   .calm-section,
+  .loved-section,
   .letters-section,
   .future-section {
     width: min(100% - 28px, 1120px);
@@ -764,8 +1022,47 @@ button:focus-visible,
     grid-template-columns: 1fr;
   }
 
+  .love-letter-card {
+    padding: 10px 10px 58px;
+  }
+
+  .love-letter-card.tall img,
+  .love-letter-card.floral img {
+    max-height: none;
+  }
+
   .luck-card-image {
     width: 252px;
+  }
+
+  .luck-card-button {
+    width: 252px;
+  }
+
+  .luck-card-picker {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .luck-picker-card {
+    min-height: 54px;
+    padding: 9px 10px;
+  }
+
+  .luck-picker-card strong {
+    font-size: 0.84rem;
+  }
+
+  .luck-card-note {
+    padding: 18px;
+  }
+
+  .luck-card-note strong {
+    font-size: 1rem;
+  }
+
+  .luck-card-note span:last-child {
+    font-size: 0.86rem;
+    line-height: 1.58;
   }
 
   .couple-photo-marquee {

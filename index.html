@@ -13,6 +13,7 @@
         <nav class="nav-links" aria-label="页面导航">
           <a href="#worth">你的价值</a>
           <a href="#effort">努力的宝宝</a>
+          <a href="#loved">爱我的宝宝</a>
           <a href="#comfort">焦虑时刻</a>
           <a href="#calm">慢慢呼吸</a>
           <a href="#letters">好运信箱</a>
@@ -147,6 +148,32 @@
         </div>
       </section>
 
+      <section class="loved-section" id="loved">
+        <div class="section-copy compact">
+          <p class="eyebrow">同样爱我的宝宝</p>
+          <h2>这些被认真写下来的喜欢，也在证明你有多温柔</h2>
+          <p>
+            你不只是被好好爱着的人，也是会把在意、心疼、感谢和陪伴认真交出来的人。
+            这些字里藏着的笨拙、真诚和勇气，我都会好好收着。
+          </p>
+        </div>
+
+        <div class="love-letter-grid" aria-label="同样爱我的宝宝写下的信">
+          <a class="love-letter-card tall" href="assets/love-letters/love-letter-01.jpg" target="_blank" rel="noopener">
+            <img src="assets/love-letters/love-letter-01.jpg" alt="同样爱我的宝宝写给亲爱的刘千的手写信第一页" loading="lazy" decoding="async" />
+            <span>写给亲爱的刘千 · 第 1 页</span>
+          </a>
+          <a class="love-letter-card tall" href="assets/love-letters/love-letter-02.jpg" target="_blank" rel="noopener">
+            <img src="assets/love-letters/love-letter-02.jpg" alt="同样爱我的宝宝写给亲爱的刘千的手写信第二页" loading="lazy" decoding="async" />
+            <span>写给亲爱的刘千 · 第 2 页</span>
+          </a>
+          <a class="love-letter-card floral" href="assets/love-letters/love-letter-03.jpg" target="_blank" rel="noopener">
+            <img src="assets/love-letters/love-letter-03.jpg" alt="同样爱我的宝宝写给刘千先生的花边信纸长信" loading="lazy" decoding="async" />
+            <span>致刘千先生 · 亲爱的宝宝</span>
+          </a>
+        </div>
+      </section>
+
       <section class="comfort-section" id="comfort">
         <div class="quote-panel">
           <p class="eyebrow">焦虑来的时候</p>
@@ -205,14 +232,25 @@
       <section class="letters-section" id="letters">
         <div class="section-copy compact">
           <p class="eyebrow">好运信箱</p>
-          <h2>不舒服的时候，让这些卡片慢慢路过你</h2>
+          <h2>不舒服的时候，让这 25 张卡片慢慢路过你</h2>
           <p>
-            这些手写卡片会一直循环出现。每一句都不是要求你立刻变好，
+            可以随机抽一封，也可以点开路过眼前的任意一张。每一句都不是要求你立刻变好，
             只是想提醒你：你已经很棒，也一直有人认真在乎你。
           </p>
         </div>
 
-        <div class="luck-card-wall" id="luckCardMarquee" aria-label="二十四张好运卡片自动轮播"></div>
+        <div class="luck-draw-panel" aria-live="polite">
+          <div>
+            <p class="luck-draw-label">今天先收下这一封</p>
+            <h3 id="selectedLuckTitle">给等消息的你</h3>
+            <p id="selectedLuckText">消息还没来，不代表你不够好。只是生活还在整理它要送给你的答案。</p>
+          </div>
+          <button type="button" id="luckDrawButton">随机抽一封</button>
+        </div>
+
+        <div class="luck-card-picker" id="luckCardPicker" aria-label="二十五封好运小信入口"></div>
+
+        <div class="luck-card-wall" id="luckCardMarquee" aria-label="二十五张好运卡片，可点击或随机抽取"></div>
 
         <div class="letter-grid" aria-label="好运小信">
           <article>
